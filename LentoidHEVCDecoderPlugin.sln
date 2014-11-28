@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LentoidHEVCDecoderPlugin", "LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin.vcxproj", "{4F1BF457-4093-4778-A2E4-53ECB6F59A27}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB71B91D-16D8-4339-9621-D81798E46E8F} = {DB71B91D-16D8-4339-9621-D81798E46E8F}
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254} = {EE55D73B-F537-4B52-8514-50B7FDF5D254}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample_common", "sample_common\sample_common.vcxproj", "{DB71B91D-16D8-4339-9621-D81798E46E8F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugin_api", "plugin_api\plugin_api.vcxproj", "{EE55D73B-F537-4B52-8514-50B7FDF5D254}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Debug|Win32.Build.0 = Debug|Win32
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Debug|x64.ActiveCfg = Debug|Win32
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Release|Win32.ActiveCfg = Release|Win32
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Release|Win32.Build.0 = Release|Win32
+		{4F1BF457-4093-4778-A2E4-53ECB6F59A27}.Release|x64.ActiveCfg = Release|Win32
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Debug|Win32.Build.0 = Debug|Win32
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Debug|x64.ActiveCfg = Debug|x64
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Debug|x64.Build.0 = Debug|x64
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Release|Win32.ActiveCfg = Release|Win32
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Release|Win32.Build.0 = Release|Win32
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Release|x64.ActiveCfg = Release|x64
+		{DB71B91D-16D8-4339-9621-D81798E46E8F}.Release|x64.Build.0 = Release|x64
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Debug|Win32.Build.0 = Debug|Win32
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Debug|x64.ActiveCfg = Debug|x64
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Debug|x64.Build.0 = Debug|x64
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Release|Win32.ActiveCfg = Release|Win32
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Release|Win32.Build.0 = Release|Win32
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Release|x64.ActiveCfg = Release|x64
+		{EE55D73B-F537-4B52-8514-50B7FDF5D254}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
