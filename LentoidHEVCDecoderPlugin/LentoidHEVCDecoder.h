@@ -1,5 +1,4 @@
-#ifndef  __LENTOIDHEVCDECODER_H
-#define  __LENTOIDHEVCDECODER_H
+#pragma once
 
 #include "mfxstructures.h"
 #include "lenthevcdec.h"
@@ -34,4 +33,3 @@ public:
 	mfxStatus ConvertSurface(FFScaler &scl,const mfxFrameSurface1& surfaceIn, mfxFrameSurface1 & surfaceOut);
 	void     ReleaseDecoder(lenthevcdec_ctx ctx);
 };
-#endif
