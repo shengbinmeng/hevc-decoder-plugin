@@ -112,11 +112,11 @@ protected:
 	}m_coreAndData;
 };
 
-class DecoderPlugin : public MFXDecoderPlugin
+class LentoidHEVCDecoderPlugin : public MFXDecoderPlugin
 {
 public:
-	DecoderPlugin();
-	virtual ~DecoderPlugin();
+	LentoidHEVCDecoderPlugin();
+	virtual ~LentoidHEVCDecoderPlugin();
 
 	// mfxPlugin functions
 	virtual mfxStatus PluginInit(mfxCoreInterface *core);
@@ -143,7 +143,7 @@ public:
 	}
 	static  MFXDecoderPlugin* Create()
 	{
-		return new DecoderPlugin();
+		return new LentoidHEVCDecoderPlugin();
 	}
 	virtual mfxStatus SetAuxParams(void* , int )
 	{

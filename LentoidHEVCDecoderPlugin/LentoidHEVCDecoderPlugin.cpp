@@ -14,12 +14,12 @@ namespace {
 //defining module template for decoder plugin
 #include "mfx_plugin_module.h"
 PluginModuleTemplate g_PluginModule = {
-	DecoderPlugin::Create,
+	LentoidHEVCDecoderPlugin::Create,
 	NULL,
 	NULL
 };
 
-DecoderPlugin::DecoderPlugin():                                     //构造函数
+LentoidHEVCDecoderPlugin::LentoidHEVCDecoderPlugin():                                     //构造函数
 	m_bInited(false),
 	m_bIsOutOpaque(false),
 	m_VideoParam(),
@@ -39,25 +39,25 @@ DecoderPlugin::DecoderPlugin():                                     //构造函数
 	}
 }
 
-DecoderPlugin::~DecoderPlugin()                   //析构函数
+LentoidHEVCDecoderPlugin::~LentoidHEVCDecoderPlugin()                   //析构函数
 {
 	Close();
 }
 
-mfxStatus DecoderPlugin::PluginInit(mfxCoreInterface *core)
+mfxStatus LentoidHEVCDecoderPlugin::PluginInit(mfxCoreInterface *core)
 {
 	MSDK_CHECK_POINTER(core, MFX_ERR_NULL_PTR);
 	m_mfxCore=MFXCoreInterface(*core);
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::PluginClose()
+mfxStatus LentoidHEVCDecoderPlugin::PluginClose()
 {
 	Close();
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::GetPluginParam(mfxPluginParam *par)   //获取Plugin信息
+mfxStatus LentoidHEVCDecoderPlugin::GetPluginParam(mfxPluginParam *par)   //获取Plugin信息
 {
 	MSDK_CHECK_POINTER(par, MFX_ERR_NULL_PTR);
 
@@ -66,7 +66,7 @@ mfxStatus DecoderPlugin::GetPluginParam(mfxPluginParam *par)   //获取Plugin信息
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::DecodeFrameSubmit(mfxBitstream *bs, mfxFrameSurface1 *surface_work, mfxFrameSurface1 **surface_out, mfxThreadTask *task)
+mfxStatus LentoidHEVCDecoderPlugin::DecodeFrameSubmit(mfxBitstream *bs, mfxFrameSurface1 *surface_work, mfxFrameSurface1 **surface_out, mfxThreadTask *task)
 {
 	MSDK_CHECK_POINTER(surface_work, MFX_ERR_NULL_PTR);
 	MSDK_CHECK_POINTER(surface_out, MFX_ERR_NULL_PTR);
@@ -103,7 +103,7 @@ mfxStatus DecoderPlugin::DecodeFrameSubmit(mfxBitstream *bs, mfxFrameSurface1 *s
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::Execute(mfxThreadTask task, mfxU32 uid_p, mfxU32 uid_a)
+mfxStatus LentoidHEVCDecoderPlugin::Execute(mfxThreadTask task, mfxU32 uid_p, mfxU32 uid_a)
 {
 	MSDK_CHECK_ERROR(m_bInited, false, MFX_ERR_NOT_INITIALIZED);
 
@@ -118,7 +118,7 @@ mfxStatus DecoderPlugin::Execute(mfxThreadTask task, mfxU32 uid_p, mfxU32 uid_a)
 	return sts;
 }
 
-mfxStatus DecoderPlugin::FreeResources(mfxThreadTask task, mfxStatus sts)
+mfxStatus LentoidHEVCDecoderPlugin::FreeResources(mfxThreadTask task, mfxStatus sts)
 {
 	MSDK_CHECK_ERROR(m_bInited, false, MFX_ERR_NOT_INITIALIZED);
 	if (m_pTasks.empty()) {
@@ -139,7 +139,7 @@ mfxStatus DecoderPlugin::FreeResources(mfxThreadTask task, mfxStatus sts)
 }
 /*The mfxVideoParam structure contains configuration parameters for encoding, decoding,transcoding and video processing*/
 
-mfxStatus DecoderPlugin::DecodeHeader(mfxBitstream *bs, mfxVideoParam *mfxParam)
+mfxStatus LentoidHEVCDecoderPlugin::DecodeHeader(mfxBitstream *bs, mfxVideoParam *mfxParam)
 {
 	lenthevcdec_ctx ctx=NULL;
 	mfxStatus sts=MFX_ERR_NONE;
@@ -155,14 +155,14 @@ mfxStatus DecoderPlugin::DecodeHeader(mfxBitstream *bs, mfxVideoParam *mfxParam)
 	return sts;
 }
 
-mfxStatus DecoderPlugin::DecoderFlush(lenthevcdec_ctx ctx)
+mfxStatus LentoidHEVCDecoderPlugin::DecoderFlush(lenthevcdec_ctx ctx)
 {
 	lenthevcdec_flush(ctx);
 
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::Init(mfxVideoParam *mfxParam)
+mfxStatus LentoidHEVCDecoderPlugin::Init(mfxVideoParam *mfxParam)
 {
 	MSDK_CHECK_POINTER(mfxParam, MFX_ERR_NULL_PTR);
 	mfxStatus sts = MFX_ERR_NONE;
@@ -201,7 +201,7 @@ mfxStatus DecoderPlugin::Init(mfxVideoParam *mfxParam)
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::Close()
+mfxStatus LentoidHEVCDecoderPlugin::Close()
 {
 	if(!m_bInited)
 		return MFX_ERR_NONE;
@@ -234,14 +234,14 @@ mfxStatus DecoderPlugin::Close()
 	return MFX_ERR_NONE;
 }
 
-mfxStatus DecoderPlugin::Query(mfxVideoParam *in, mfxVideoParam *out)      //only expose this interface
+mfxStatus LentoidHEVCDecoderPlugin::Query(mfxVideoParam *in, mfxVideoParam *out)      //only expose this interface
 {
 	return MFX_ERR_NONE;
 }
 
 /*The function returns minimum and suggested numbers of the output frame surfaces
 required for decoding initialization and their type.*/
-mfxStatus DecoderPlugin::QueryIOSurf(mfxVideoParam *par, mfxFrameAllocRequest *in, mfxFrameAllocRequest *out)
+mfxStatus LentoidHEVCDecoderPlugin::QueryIOSurf(mfxVideoParam *par, mfxFrameAllocRequest *in, mfxFrameAllocRequest *out)
 {
 	MSDK_CHECK_POINTER(par,MFX_ERR_NULL_PTR);
 	MSDK_CHECK_POINTER(out,MFX_ERR_NULL_PTR);
