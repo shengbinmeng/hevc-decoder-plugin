@@ -41,9 +41,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\LentoidHEVCDecoderPlugin\thirdparty\include\libavutil;..\..\LentoidHEVCDecoderPlugin\thirdparty\include\libswscale;..\..\LentoidHEVCDecoderPlugin\thirdparty\include\libavformat;..\..\LentoidHEVCDecoderPlugin\thirdparty\include\libavcodec;..\..\LentoidHEVCDecoderPlugin\thirdparty\include;C:\Program Files\Intel\Media SDK 2014 R2 for Windows Servers (build 20140804)\include;..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api;..\..\LentoidHEVCDecoderPlugin\sample_common\include;..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include;C:\Program Files\Intel\Media SDK 2014 R2 for Windows Servers (build 20140804)\include;..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api;..\..\LentoidHEVCDecoderPlugin\sample_common\include;..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;$(IncludePath)</IncludePath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <LibraryPath>..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;..\..\LentoidHEVCDecoderPlugin\thirdparty\lib;C:\Program Files %28x86%29\Microsoft Visual Studio 11.0\VC\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\lib\win32;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
