@@ -48,8 +48,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include\libavutil;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include\libswscale;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include\libavformat;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include\libavcodec;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include;C:\Program Files\Intel\Media SDK 2014 R2 for Windows Servers (build 20140804)\include;..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api;..\..\LentoidHEVCDecoderPlugin\sample_common\include;..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\lib\win32;C:\Program Files %28x86%29\Microsoft Visual Studio 11.0\VC\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\include;C:\Program Files\Intel\Media SDK 2014 R2 for Windows Servers (build 20140804)\include;..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api;..\..\LentoidHEVCDecoderPlugin\sample_common\include;..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\LentoidHEVCDecoderPlugin\LentoidHEVCDecoderPlugin;..\..\LentoidHEVCDecoderPlugin\thirdparty\ffmpeg\lib\win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -65,7 +65,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>LentoidHEDecDLL.lib;sample_common.lib;plugin_api.lib;avformat.lib;swscale.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>C:\Users\intel06\Desktop\LentoidHEVCDecoderPlugin（完成版）\LentoidHEVCDecoderPlugin\_build\Win32\Debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,7 +86,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\intel06\Desktop\LentoidHEVCDecoderPlugin（完成版）\LentoidHEVCDecoderPlugin\_build\Win32\Release\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>LentoidHEDecDLL.lib;sample_common.lib;plugin_api.lib;avformat.lib;swscale.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
