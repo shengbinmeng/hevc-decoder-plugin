@@ -64,9 +64,9 @@ mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfx
 	au_buf_size = bs.DataLength;
 
 	// find all AU 
-	au_count = 0;          //AU个数
+	au_count = 0;
 	for ( i = 0; i < au_buf_size; i+=3 ) {
-		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);  //得到一个AU
+		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);
 		if ( i < au_buf_size )
 			au_pos[au_count++] = i;
 	}
@@ -147,10 +147,10 @@ mfxStatus LentoidHEVCDecoder::DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx
 	au_buf_size = bs.DataLength;
 
 	// find all AU 
-	au_count = 0;          //AU个数
+	au_count = 0;
 	for ( i = 0; i < au_buf_size; i+=3 )
 	{
-		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);  //得到一个AU
+		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);
 		if ( i < au_buf_size )
 			au_pos[au_count++] = i;
 	}

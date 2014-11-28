@@ -19,7 +19,7 @@ PluginModuleTemplate g_PluginModule = {
 	NULL
 };
 
-LentoidHEVCDecoderPlugin::LentoidHEVCDecoderPlugin():                                     //构造函数
+LentoidHEVCDecoderPlugin::LentoidHEVCDecoderPlugin():
 	m_bInited(false),
 	m_bIsOutOpaque(false),
 	m_VideoParam(),
@@ -39,7 +39,7 @@ LentoidHEVCDecoderPlugin::LentoidHEVCDecoderPlugin():                           
 	}
 }
 
-LentoidHEVCDecoderPlugin::~LentoidHEVCDecoderPlugin()                   //析构函数
+LentoidHEVCDecoderPlugin::~LentoidHEVCDecoderPlugin()
 {
 	Close();
 }
@@ -57,7 +57,7 @@ mfxStatus LentoidHEVCDecoderPlugin::PluginClose()
 	return MFX_ERR_NONE;
 }
 
-mfxStatus LentoidHEVCDecoderPlugin::GetPluginParam(mfxPluginParam *par)   //获取Plugin信息
+mfxStatus LentoidHEVCDecoderPlugin::GetPluginParam(mfxPluginParam *par)
 {
 	MSDK_CHECK_POINTER(par, MFX_ERR_NULL_PTR);
 
