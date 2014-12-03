@@ -57,14 +57,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LENTOIDHEVCDECODERPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(INTELMEDIASDKROOT)\include;..\sample_common\include\;..\thirdparty\ffmpeg\include\;..\plugin_api\plugin_api\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(INTELMEDIASDKROOT)\include;..\sample_common\include\;..\thirdparty\ffmpeg\include\;..\plugin_api\plugin_api\;..\lenthevcdec\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>LentoidHEDecDLL.lib;sample_common.lib;plugin_api.lib;avformat.lib;swscale.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\;..\thirdparty\ffmpeg\lib\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\;..\thirdparty\ffmpeg\lib\$(Platform)\;..\lenthevcdec\lib\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,14 +79,14 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions> /SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(INTELMEDIASDKROOT)\include;..\sample_common\include\;..\thirdparty\ffmpeg\include\;..\plugin_api\plugin_api\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(INTELMEDIASDKROOT)\include;..\sample_common\include\;..\thirdparty\ffmpeg\include\;..\plugin_api\plugin_api\;..\lenthevcdec\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\;..\thirdparty\ffmpeg\lib\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\;..\thirdparty\ffmpeg\lib\$(Platform)\;..\lenthevcdec\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>LentoidHEDecDLL.lib;sample_common.lib;plugin_api.lib;avformat.lib;swscale.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
