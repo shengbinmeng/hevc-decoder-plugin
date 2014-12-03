@@ -25,7 +25,7 @@ int LentoidHEVCDecoder::GetFrame(unsigned char* buf, int size, int *is_idr)
 		if ( 0 == buf[i] && 0 == buf[i+1] && 1 == buf[i+2] ) {
 			nal_type = (buf[i+3] & 0x7E) >> 1;
 			if ( nal_type <= 21 ) {
-				if ( buf[i+5] & 0x80 ) { /* first slice in pic */
+				if ( buf[i+5] & 0x80 ) { // first slice in pic 
 					if ( !seq_hdr )
 						break;
 					else
@@ -52,8 +52,7 @@ int LentoidHEVCDecoder::GetFrame(unsigned char* buf, int size, int *is_idr)
 
 mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfxFrameSurface1 &srf,int au_number)
 {
-	int ret,frame_count=0;
-	int i=0;
+	int ret, frame_count = 0;
 	p_au_buf_size = bs.DataLength;
 
 	memset(&srf, 0, sizeof(srf)); //clean srf
@@ -73,12 +72,12 @@ mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfx
 
 		if(ret>=0)
 		{
-			srf.Info.Height=p_height;
-			srf.Info.CropH =p_height;
-			srf.Info.Width=p_width;
-			srf.Info.CropW=p_width;
-			srf.Info.FourCC=MFX_FOURCC_YV12;
-			srf.Data.Pitch=p_stride[0];
+			srf.Info.Height = p_height;
+			srf.Info.CropH = p_height;
+			srf.Info.Width = p_width;
+			srf.Info.CropW = p_width;
+			srf.Info.FourCC = MFX_FOURCC_YV12;
+			srf.Data.Pitch = p_stride[0];
 			srf.Data.Locked = 0;
 			srf.Data.Corrupted = 0;
 			srf.Data.DataFlag = 0;
@@ -96,12 +95,12 @@ mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfx
 			return MFX_ERR_MORE_DATA;
 		}
 
-		srf.Info.Height=p_height;
-		srf.Info.CropH =p_height;
-		srf.Info.Width=p_width;
-		srf.Info.CropW=p_width;
-		srf.Info.FourCC=MFX_FOURCC_YV12;
-		srf.Data.Pitch=p_stride[0];
+		srf.Info.Height = p_height;
+		srf.Info.CropH = p_height;
+		srf.Info.Width = p_width;
+		srf.Info.CropW = p_width;
+		srf.Info.FourCC = MFX_FOURCC_YV12;
+		srf.Data.Pitch = p_stride[0];
 		srf.Data.Locked = 0;
 		srf.Data.Corrupted = 0;
 		srf.Data.DataFlag = 0;
@@ -117,7 +116,7 @@ mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfx
 
 mfxStatus LentoidHEVCDecoder::DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx, mfxFrameSurface1 &srf)
 {
-	int ret=1,frame_count=0,i=0;
+	int ret = 1, frame_count = 0, i;
 	p_au_buf_size = bs.DataLength;
 
 	// find all AU
@@ -132,9 +131,9 @@ mfxStatus LentoidHEVCDecoder::DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx
 	p_au_pos[p_au_count] = p_au_buf_size; // include last AU
 
 	//fill the surface INFO
-	i=0;
+	i = 0;
 	p_got_frame = 0;
-	p_pts=i*40;
+	p_pts = i*40;
 	ret = lenthevcdec_decode_frame(ctx, bs.Data + p_au_pos[i], p_au_pos[i + 1] - p_au_pos[i], p_pts,
 		&p_got_frame, &p_width, &p_height, p_stride, (void**)p_pixels, &p_got_pts);
 	if ( ret < 0 ) {
@@ -144,10 +143,10 @@ mfxStatus LentoidHEVCDecoder::DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx
 	}
 	if ( ret >= 0 )
 	{
-		srf.Info.Height=p_height;
-		srf.Info.CropH =p_height;
-		srf.Info.Width=p_width;
-		srf.Info.CropW=p_width;
+		srf.Info.Height = p_height;
+		srf.Info.CropH = p_height;
+		srf.Info.Width = p_width;
+		srf.Info.CropW = p_width;
 		srf.Info.FourCC=MFX_FOURCC_YV12;
 	}
 

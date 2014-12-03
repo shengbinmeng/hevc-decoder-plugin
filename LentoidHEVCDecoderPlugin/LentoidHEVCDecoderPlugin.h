@@ -30,7 +30,7 @@ public:
 		,m_lenthevcdec(&dec)
 	{
 	}
-	mfxStatus operator () () {          //÷ÿ‘ÿ£®£©‘ÀÀ„
+	mfxStatus operator () () {          
 		// Task is run once and saved status
 		if (m_executeSts)
 			return m_executeSts;
