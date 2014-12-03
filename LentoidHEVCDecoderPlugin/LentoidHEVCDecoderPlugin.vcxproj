@@ -63,7 +63,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>LentoidHEDecDLL.lib;sample_common.lib;plugin_api.lib;avformat.lib;swscale.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>..\..\LentoidHEVCDecoderPlugin\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\plugin_api\plugin_api\mfx_plugin.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>..\_build\$(Platform)\$(Configuration)\lib\;..\thirdparty\ffmpeg\lib\$(Platform)\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
