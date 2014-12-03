@@ -89,7 +89,7 @@ mfxStatus LentoidHEVCDecoderPlugin::DecodeFrameSubmit(mfxBitstream *bs, mfxFrame
 		MSDK_CHECK_RESULT(sts, MFX_ERR_NONE, sts);
 	}
 
-	m_pTasks.push_back(DecoderTask(bs,m_decoder,real_surface_work,m_mfxCore,&m_scl));
+	m_pTasks.push_back(DecoderTask(bs,m_decoder,real_surface_work,m_mfxCore,&m_scl,g_lenthevcdec));
 
 	*task = (mfxThreadTask)&m_pTasks.back();
 

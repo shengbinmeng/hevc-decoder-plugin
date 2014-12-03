@@ -3,7 +3,6 @@
 #include <limits>
 #include "sample_defs.h"
 
-#define AU_COUNT_MAX	(1024 * 64)
 
 LentoidHEVCDecoder::LentoidHEVCDecoder()
 {
@@ -19,7 +18,7 @@ lenthevcdec_ctx LentoidHEVCDecoder::CreatDecoder(int threads, int compatibility,
 	return lenthevcdec_create(threads, compatibility, reserved);
 }
 
-int LentoidHEVCDecoder::lent_hevc_get_frame(unsigned char* buf, int size, int *is_idr)
+int LentoidHEVCDecoder::LentHEVCGetFrame(unsigned char* buf, int size, int *is_idr)
 {
 	static int seq_hdr = 0;
 	int i, nal_type, idr = 0;
@@ -54,24 +53,9 @@ int LentoidHEVCDecoder::lent_hevc_get_frame(unsigned char* buf, int size, int *i
 
 mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfxFrameSurface1 &srf,int au_number)
 {
-	//unsigned char *au_buf;
-	void *pixels[3];
 	int ret,frame_count=0;
-	int got_frame, width, height, stride[3],i=0;
-	unsigned int au_pos[AU_COUNT_MAX], au_count, au_buf_size;
-	int64_t pts,got_pts;
-
+	int i=0;
 	au_buf_size = bs.DataLength;
-
-	// find all AU 
-	au_count = 0;
-	for ( i = 0; i < au_buf_size; i+=3 ) {
-		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);
-		if ( i < au_buf_size )
-			au_pos[au_count++] = i;
-	}
-	au_pos[0] = 0; // include SEI 
-	au_pos[au_count] = au_buf_size; //include last AU 
 
 	memset(&srf, 0, sizeof(srf)); //clean srf
 
@@ -137,20 +121,14 @@ mfxStatus LentoidHEVCDecoder::DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfx
 
 mfxStatus LentoidHEVCDecoder::DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx, mfxFrameSurface1 &srf)
 {
-	//unsigned char *au_buf;
-	void *pixels[3];
-	int ret=1,frame_count=0;
-	int got_frame, width, height, stride[3],i=0;
-	unsigned int au_pos[1024 * 64], au_count, au_buf_size;
-	int64_t pts,got_pts;
-
+	int ret=1,frame_count=0,i=0;
 	au_buf_size = bs.DataLength;
 
 	// find all AU 
 	au_count = 0;
 	for ( i = 0; i < au_buf_size; i+=3 )
 	{
-		i += lent_hevc_get_frame(bs.Data + i, au_buf_size - i, NULL);
+		i += LentHEVCGetFrame(bs.Data + i, au_buf_size - i, NULL);
 		if ( i < au_buf_size )
 			au_pos[au_count++] = i;
 	}

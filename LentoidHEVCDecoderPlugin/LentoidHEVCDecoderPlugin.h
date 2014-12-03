@@ -16,16 +16,18 @@ public:
 	DecoderTask():
 		m_bsIn(),
 		m_pOut(NULL),
-		m_coreAndData(NULL, NULL)
+		m_coreAndData(NULL, NULL),
+	    m_lenthevcdec()
 	{
 	}
-	DecoderTask(mfxBitstream *bs_in,lenthevcdec_ctx ctx,mfxFrameSurface1 *frame_out, MFXCoreInterface &pCore, FFScaler *scl)
+	DecoderTask(mfxBitstream *bs_in,lenthevcdec_ctx ctx,mfxFrameSurface1 *frame_out, MFXCoreInterface &pCore, FFScaler *scl,LentoidHEVCDecoder &dec)
 		:m_bsIn(bs_in? *bs_in:mfxBitstream())
 		,m_ctx(ctx)
 		,m_pOut(frame_out)
 		,m_bBusy(!bs_in)
 		,m_coreAndData(&pCore, &frame_out->Data)
 		,m_scl(scl)
+		,m_lenthevcdec(&dec)
 	{
 	}
 	mfxStatus operator () () {          //÷ÿ‘ÿ£®£©‘ÀÀ„
