@@ -27,7 +27,7 @@ class LentoidHEVCDecoder
 public:
 	LentoidHEVCDecoder();
 	~LentoidHEVCDecoder();
-	int LentHEVCGetFrame(unsigned char* buf, int size, int *is_idr) ;
+	int GetFrame(unsigned char* buf, int size, int *is_idr) ;
 	lenthevcdec_ctx CreatDecoder(int threads, int compatibility, void* reserved);
 	mfxStatus DecodeBS(mfxBitstream &bs, lenthevcdec_ctx ctx,mfxFrameSurface1 &srf,int au_number);
 	mfxStatus DecoderFirst(mfxBitstream &bs, lenthevcdec_ctx ctx, mfxFrameSurface1 &srf);
@@ -35,14 +35,14 @@ public:
 	void     ReleaseDecoder(lenthevcdec_ctx ctx);
 
 protected:
-	unsigned int    au_pos[AU_COUNT_MAX];
-	unsigned int	au_count;
-	unsigned int	au_buf_size;
-	int             got_frame;
-	int				width;
-	int				height;
-	int				stride[3];
-	void			*pixels[3];
-	int64_t         pts;
-	int64_t			got_pts;
+	unsigned int    p_au_pos[AU_COUNT_MAX];
+	unsigned int	p_au_count;
+	unsigned int	p_au_buf_size;
+	int             p_got_frame;
+	int				p_width;
+	int				p_height;
+	int				p_stride[3];
+	void			*p_pixels[3];
+	int64_t         p_pts;
+	int64_t			p_got_pts;
 };
