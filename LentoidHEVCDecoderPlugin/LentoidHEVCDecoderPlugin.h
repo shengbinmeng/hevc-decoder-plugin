@@ -8,7 +8,7 @@
 #include "surface_auto_lock.h"
 #include "LentoidHEVCDecoder.h"
 
-int AU_COUNT=0;
+int AU_COUNT = 0;
 
 class DecoderTask
 {
@@ -53,11 +53,13 @@ public:
 			return lock;
 		}
 		//need to transfer data from HEVC internal buffers to mediasdk surface
-		if(surface.Data.Y!=NULL)
+		if (surface.Data.Y != NULL)
 		{
 			m_executeSts = m_lenthevcdec->ConvertSurface(*m_scl,surface, *m_pOut);
 			return m_executeSts;
 		}
+
+		return MFX_ERR_NONE;
 	}
 
 protected:

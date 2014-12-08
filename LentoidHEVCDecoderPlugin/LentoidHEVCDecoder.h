@@ -8,8 +8,7 @@ extern "C" {
 #include "libswscale/swscale.h"
 }
 
-typedef void* lenthevcdec_ctx;
-#define AU_COUNT_MAX	(1024 * 64)
+#define AU_COUNT_MAX (1024 * 64)
 
 struct FFScaler
 {
@@ -35,14 +34,14 @@ public:
 	void     ReleaseDecoder(lenthevcdec_ctx ctx);
 
 protected:
-	unsigned int    p_au_pos[AU_COUNT_MAX];
-	unsigned int	p_au_count;
-	unsigned int	p_au_buf_size;
-	int             p_got_frame;
-	int				p_width;
-	int				p_height;
-	int				p_stride[3];
-	void			*p_pixels[3];
-	int64_t         p_pts;
-	int64_t			p_got_pts;
+	unsigned int    m_au_pos[AU_COUNT_MAX];
+	unsigned int	m_au_count;
+	unsigned int	m_au_buf_size;
+	int             m_got_frame;
+	int				m_width;
+	int				m_height;
+	int				m_stride[3];
+	void			*m_pixels[3];
+	int64_t         m_pts;
+	int64_t			m_got_pts;
 };

@@ -78,7 +78,7 @@ mfxStatus LentoidHEVCDecoderPlugin::DecodeFrameSubmit(mfxBitstream *bs, mfxFrame
 
 	mfxStatus sts = MFX_ERR_NONE;
 
-	if (m_pTasks.size()==m_MaxNumTasks)
+	if (m_pTasks.size() == m_MaxNumTasks)
 	{
 		return MFX_WRN_DEVICE_BUSY;
 	}
@@ -107,13 +107,13 @@ mfxStatus LentoidHEVCDecoderPlugin::Execute(mfxThreadTask task, mfxU32 uid_p, mf
 {
 	MSDK_CHECK_ERROR(m_bInited, false, MFX_ERR_NOT_INITIALIZED);
 
-	mfxStatus sts=MFX_ERR_NONE;
+	mfxStatus sts = MFX_ERR_NONE;
 
 	DecoderTask &current_task = *(DecoderTask  *)task;
 
-	sts=current_task();
+	sts = current_task();
 
-	AU_COUNT=AU_COUNT+1;  //next AU
+	AU_COUNT = AU_COUNT+1;  //next AU
 
 	return sts;
 }
@@ -141,16 +141,16 @@ mfxStatus LentoidHEVCDecoderPlugin::FreeResources(mfxThreadTask task, mfxStatus 
 
 mfxStatus LentoidHEVCDecoderPlugin::DecodeHeader(mfxBitstream *bs, mfxVideoParam *mfxParam)
 {
-	lenthevcdec_ctx ctx=NULL;
-	mfxStatus sts=MFX_ERR_NONE;
-	mfxFrameSurface1 srff={0};
+	lenthevcdec_ctx ctx = NULL;
+	mfxStatus sts = MFX_ERR_NONE;
+	mfxFrameSurface1 srff = {0};
 
-	ctx=g_lenthevcdec.CreatDecoder(1, 120, NULL);
-	sts=g_lenthevcdec.DecoderFirst(*bs,ctx,srff);
+	ctx = g_lenthevcdec.CreatDecoder(1, 120, NULL);
+	sts = g_lenthevcdec.DecoderFirst(*bs, ctx, srff);
 	g_lenthevcdec.ReleaseDecoder(ctx);
-	if(sts==MFX_ERR_NONE)
+	if (sts == MFX_ERR_NONE)
 	{
-		mfxParam->mfx.FrameInfo=srff.Info;
+		mfxParam->mfx.FrameInfo = srff.Info;
 	}
 	return sts;
 }
@@ -168,7 +168,7 @@ mfxStatus LentoidHEVCDecoderPlugin::Init(mfxVideoParam *mfxParam)
 	mfxStatus sts = MFX_ERR_NONE;
 
 	m_VideoParam = *mfxParam;
-	mfxInfoMFX  m_pParm=mfxParam->mfx;
+	mfxInfoMFX  m_pParm = mfxParam->mfx;
 
 	m_bIsOutOpaque = (m_VideoParam.IOPattern & MFX_IOPATTERN_OUT_OPAQUE_MEMORY) ? true : false;
 	mfxExtOpaqueSurfaceAlloc* pluginOpaqueAlloc = NULL;
@@ -191,7 +191,7 @@ mfxStatus LentoidHEVCDecoderPlugin::Init(mfxVideoParam *mfxParam)
 		MSDK_CHECK_RESULT(sts, MFX_ERR_NONE, MFX_ERR_MEMORY_ALLOC);
 	}
 
-	m_MaxNumTasks=m_VideoParam.AsyncDepth;                        //maxTask
+	m_MaxNumTasks = m_VideoParam.AsyncDepth;                        //maxTask
 
 	if (m_MaxNumTasks < 1) m_MaxNumTasks = 1;
 
