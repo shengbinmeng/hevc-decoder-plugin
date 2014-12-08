@@ -93,7 +93,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="lenthevcdec.h" />
     <ClInclude Include="LentoidHEVCDecoder.h" />
     <ClInclude Include="LentoidHEVCDecoderPlugin.h" />
   </ItemGroup>
